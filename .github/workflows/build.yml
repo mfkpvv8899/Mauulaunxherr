@@ -39,6 +39,7 @@ jobs:
           org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8
           android.useAndroidX=true
           kotlin.code.style=official
+          android.suppressUnsupportedCompileSdk=35
           FIM_2
           cat > app/build.gradle.kts <<'FIM_3'
           plugins {
@@ -68,6 +69,11 @@ jobs:
               }
 
               buildFeatures { compose = true }
+              compileOptions {
+                  sourceCompatibility = JavaVersion.VERSION_17
+                  targetCompatibility = JavaVersion.VERSION_17
+              }
+              kotlinOptions { jvmTarget = "17" }
           }
 
           dependencies {
@@ -120,6 +126,7 @@ jobs:
           import androidx.activity.compose.setContent
           import androidx.activity.result.contract.ActivityResultContracts
           import androidx.compose.foundation.*
+          import androidx.compose.foundation.interaction.MutableInteractionSource
           import androidx.compose.foundation.layout.*
           import androidx.compose.foundation.lazy.LazyRow
           import androidx.compose.foundation.lazy.grid.GridCells
