@@ -5,10 +5,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        # Troque pelo nome da pasta onde ficam os arquivos do projeto
-        working-directory: ./NOME_DA_SUBPASTA 
     steps:
       - uses: actions/checkout@v4
       
